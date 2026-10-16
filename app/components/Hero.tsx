@@ -35,7 +35,7 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
 }
 
 export default function Hero({
-  headline = "El mercado automotor.",
+  headline = "Compra y venta de autos.",
   subheadline = "Conectate directo con vendedores particulares y concesionarias verificadas. Encontrá tu próximo auto o publicá el tuyo en minutos.",
 }: HeroProps) {
   const reduce = useReducedMotion();
@@ -66,7 +66,7 @@ export default function Hero({
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[1] hidden bg-[radial-gradient(60%_90%_at_0%_0%,rgba(202,138,4,0.38),transparent_65%),radial-gradient(50%_80%_at_100%_100%,rgba(180,83,9,0.28),transparent_65%)] sm:block"
       />
-      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-3 py-6 sm:justify-end sm:py-6 lg:justify-center lg:px-6 lg:py-14">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col justify-center px-3 pb-6 pt-[calc(1.5rem+10vw)] sm:justify-end sm:py-6 lg:justify-center lg:px-6 lg:py-14">
         <div className="mx-auto w-full max-w-xl text-center lg:max-w-3xl">
           <div className="mx-auto w-fit max-w-full">
             <motion.h1
