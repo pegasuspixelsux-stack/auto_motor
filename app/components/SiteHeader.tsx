@@ -6,8 +6,6 @@ import Logo from "./Logo";
 const RIGHT_LINKS = [
   { label: "Financiación", href: "/#calculadora", wide: true },
   { label: "Vende tu auto", href: "/#publicar", wide: true },
-  { label: "Guardados (0)", href: "#", wide: false },
-  { label: "Ingresar", href: "#", wide: false },
 ];
 
 const LINKS = [
