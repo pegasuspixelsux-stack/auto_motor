@@ -71,22 +71,22 @@ export default function DealershipBar({
                 href={`/concesionarias/${dealer.slug}`}
                 data-testid={`dealer-chip-${dealer.slug}`}
                 aria-label={`${dealer.name}, ${dealer.vehicleCount} vehículos`}
-                className="group flex w-28 flex-col items-center text-center outline-none"
+                className="group flex w-32 flex-col md:w-36 items-center text-center outline-none"
               >
-                <span className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-line bg-surface text-lg font-semibold tracking-tight text-fg shadow-[var(--card-shadow)] backdrop-blur-sm transition-[border-color,box-shadow] duration-200 group-hover:border-fg/40 group-focus-visible:ring-2 group-focus-visible:ring-fg/60 md:h-20 md:w-20 md:text-xl [:root:not([data-theme=light])_&]:group-hover:border-brand/60 [:root:not([data-theme=light])_&]:group-hover:shadow-[0_0_28px_-4px_rgba(255,234,0,0.45)]">
+                <span className="relative flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border border-line bg-surface text-xl font-semibold tracking-tight text-fg shadow-[var(--card-shadow)] backdrop-blur-sm transition-[border-color,box-shadow] duration-200 group-hover:border-fg/40 group-focus-visible:ring-2 group-focus-visible:ring-fg/60 md:h-28 md:w-28 md:text-2xl [:root:not([data-theme=light])_&]:group-hover:border-brand/60 [:root:not([data-theme=light])_&]:group-hover:shadow-[0_0_28px_-4px_rgba(255,234,0,0.45)]">
                   {dealer.logoUrl ? (
                     <Image
                       src={dealer.logoUrl}
                       alt=""
                       fill
-                      sizes="80px"
+                      sizes="112px"
                       className="object-cover"
                     />
                   ) : (
                     <span aria-hidden>{initials(dealer.name)}</span>
                   )}
                 </span>
-                <span className="mt-2 max-w-[100px] truncate text-xs font-medium text-fg/90 md:text-sm">
+                <span className="mt-3 max-w-[120px] truncate text-sm font-medium text-fg/90 md:max-w-[140px]">
                   {dealer.name}
                 </span>
                 <span className="mt-0.5 text-[10px] tabular-nums text-subtle">
