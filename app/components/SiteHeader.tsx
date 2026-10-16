@@ -2,15 +2,18 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import Logo from "./Logo";
 
+/** `wide` links only show from the lg breakpoint, to keep tablets uncrowded. */
 const RIGHT_LINKS = [
-  { label: "Guardados (0)", href: "#" },
-  { label: "Ingresar", href: "#" },
+  { label: "Financiación", href: "/#calculadora", wide: true },
+  { label: "Vende tu auto", href: "/#publicar", wide: true },
+  { label: "Guardados (0)", href: "#", wide: false },
+  { label: "Ingresar", href: "#", wide: false },
 ];
 
 const LINKS = [
-  { label: "Mercado", href: "/autos" },
+  { label: "Publicar tu auto", href: "/#publicar" },
+  { label: "Compra tu auto", href: "/autos" },
   { label: "Concesionarias", href: "/concesionarias" },
-  { label: "Publicar auto", href: "#" },
 ];
 
 export default function SiteHeader() {
@@ -50,7 +53,7 @@ export default function SiteHeader() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-xs font-medium uppercase tracking-widest text-muted transition-colors duration-150 hover:text-fg"
+              className={`text-xs font-medium uppercase tracking-widest text-muted transition-colors duration-150 hover:text-fg ${link.wide ? "hidden lg:inline" : ""}`}
             >
               {link.label}
             </Link>
