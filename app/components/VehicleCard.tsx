@@ -1,13 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  ArrowRight,
-  Building2,
-  MapPin,
-  MessageCircle,
-  UserRound,
-} from "lucide-react";
+import { ArrowRight, Building2, MapPin, UserRound } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -49,10 +43,6 @@ export default function VehicleCard({
   const reduce = useReducedMotion();
   const [imageFailed, setImageFailed] = useState(false);
   const title = `${vehicle.year} ${vehicle.make} ${vehicle.model}`;
-  const phone =
-    vehicle.sellerType === "dealer"
-      ? vehicle.dealership?.phone
-      : vehicle.sellerPhone;
 
   return (
     <motion.article
@@ -166,38 +156,14 @@ export default function VehicleCard({
           >
             {usd.format(vehicle.price)}
           </p>
-          {compact === true ? (
-            <Link
-              href={`/autos/${vehicle.id}`}
-              aria-label={`Ver la ficha del ${title}`}
-              data-testid={`open-${vehicle.id}`}
-              className="relative z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-line text-muted transition-[color,transform,border-color] duration-150 hover:border-fg/40 hover:text-fg group-hover:translate-x-0.5 active:scale-95"
-            >
-              <ArrowRight
-                className="h-3.5 w-3.5"
-                strokeWidth={1.75}
-                aria-hidden
-              />
-            </Link>
-          ) : (
-            phone && (
-              <a
-                href={`https://wa.me/${phone}?text=${encodeURIComponent(`Hola, me interesa el ${title} publicado en AUTO MOTOR.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Contactar por WhatsApp por el ${title}`}
-                data-testid={`contact-${vehicle.id}`}
-                className={`relative z-10 inline-flex items-center gap-1.5 rounded-full border border-line font-semibold text-muted transition-[color,transform,border-color] duration-150 hover:border-fg/40 hover:text-fg active:scale-95 ${pick(compact, "px-2.5 py-1 text-[10px]", "px-3 py-1.5 text-xs", "sm:px-3 sm:py-1.5 sm:text-xs")}`}
-              >
-                <MessageCircle
-                  className="h-3.5 w-3.5"
-                  strokeWidth={1.75}
-                  aria-hidden
-                />
-                Contactar
-              </a>
-            )
-          )}
+          <Link
+            href={`/autos/${vehicle.id}`}
+            aria-label={`Ver la ficha del ${title}`}
+            data-testid={`open-${vehicle.id}`}
+            className="relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-line text-muted transition-[color,transform,border-color] duration-150 hover:border-fg/40 hover:text-fg group-hover:translate-x-0.5 active:scale-95"
+          >
+            <ArrowRight className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+          </Link>
         </div>
       </div>
     </motion.article>

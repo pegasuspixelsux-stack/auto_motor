@@ -58,7 +58,8 @@ export default async function VehiclePage({ params }: Props) {
   if (!vehicle) notFound();
 
   const title = `${vehicle.year} ${vehicle.make} ${vehicle.model}`;
-  const dealer = vehicle.sellerType === "dealer" ? vehicle.dealership : undefined;
+  const dealer =
+    vehicle.sellerType === "dealer" ? vehicle.dealership : undefined;
   const phone = dealer ? dealer.phone : vehicle.sellerPhone;
   const whatsapp = phone
     ? `https://wa.me/${phone}?text=${encodeURIComponent(
@@ -131,7 +132,12 @@ export default async function VehiclePage({ params }: Props) {
               {usd.format(vehicle.price)}
             </p>
             <p className="mt-2 text-xs text-subtle">
-              Publicado el {date.format(new Date(`${vehicle.createdAt}T12:00:00`))}
+              <span data-testid="vehicle-id">
+                ID del aviso: {vehicle.id.padStart(4, "0")}
+              </span>
+              {" · "}
+              Publicado el{" "}
+              {date.format(new Date(`${vehicle.createdAt}T12:00:00`))}
             </p>
 
             <section
@@ -147,7 +153,11 @@ export default async function VehiclePage({ params }: Props) {
                   href={`/concesionarias/${dealer.slug}`}
                   className="mt-2 flex items-center gap-2 text-lg font-medium tracking-tight hover:underline hover:underline-offset-4"
                 >
-                  <Building2 className="h-4 w-4 shrink-0 text-muted" strokeWidth={1.75} aria-hidden />
+                  <Building2
+                    className="h-4 w-4 shrink-0 text-muted"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
                   {dealer.name}
                   {dealer.verified && (
                     <BadgeCheck
@@ -159,12 +169,20 @@ export default async function VehiclePage({ params }: Props) {
                 </Link>
               ) : (
                 <p className="mt-2 flex items-center gap-2 text-lg font-medium tracking-tight">
-                  <UserRound className="h-4 w-4 shrink-0 text-muted" strokeWidth={1.75} aria-hidden />
+                  <UserRound
+                    className="h-4 w-4 shrink-0 text-muted"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
                   Vendedor particular
                 </p>
               )}
               <p className="mt-1 inline-flex items-center gap-1.5 text-sm text-muted">
-                <MapPin className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
+                <MapPin
+                  className="h-3.5 w-3.5"
+                  strokeWidth={1.75}
+                  aria-hidden
+                />
                 {vehicle.location}
               </p>
 
@@ -176,7 +194,11 @@ export default async function VehiclePage({ params }: Props) {
                   data-testid="vehicle-contact"
                   className="mt-5 flex w-full items-center justify-center gap-2 rounded-full bg-inverse px-6 py-3 text-xs font-semibold uppercase tracking-wider text-on-inverse transition-[transform,opacity] duration-150 hover:opacity-85 active:scale-[0.98]"
                 >
-                  <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+                  <MessageCircle
+                    className="h-4 w-4"
+                    strokeWidth={1.75}
+                    aria-hidden
+                  />
                   Contactar por WhatsApp
                 </a>
               )}
@@ -197,7 +219,11 @@ export default async function VehiclePage({ params }: Props) {
                 key={label}
                 className="rounded-xl border border-line bg-surface p-4"
               >
-                <Icon className="h-4 w-4 text-muted" strokeWidth={1.75} aria-hidden />
+                <Icon
+                  className="h-4 w-4 text-muted"
+                  strokeWidth={1.75}
+                  aria-hidden
+                />
                 <dt className="mt-3 text-[10px] font-medium uppercase tracking-widest text-muted">
                   {label}
                 </dt>
