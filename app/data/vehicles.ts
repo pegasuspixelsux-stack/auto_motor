@@ -67,6 +67,51 @@ export const DEALERSHIPS: Dealership[] = [
     phone: "59899000003",
     rating: 4.7,
   },
+  {
+    id: "d4",
+    name: "Garage Colonia",
+    slug: "garage-colonia",
+    location: "Colonia del Sacramento, UY",
+    verified: true,
+    phone: "59899000004",
+    rating: 4.5,
+  },
+  {
+    id: "d5",
+    name: "Maldonado Premium Cars",
+    slug: "maldonado-premium-cars",
+    location: "Maldonado, UY",
+    verified: true,
+    phone: "59899000005",
+    rating: 4.9,
+  },
+  {
+    id: "d6",
+    name: "Classic Motors Uruguay",
+    slug: "classic-motors-uruguay",
+    location: "Montevideo, UY",
+    verified: true,
+    phone: "59899000006",
+    rating: 4.8,
+  },
+  {
+    id: "d7",
+    name: "Salto Automotores",
+    slug: "salto-automotores",
+    location: "Salto, UY",
+    verified: true,
+    phone: "59899000007",
+    rating: 4.4,
+  },
+  {
+    id: "d8",
+    name: "Canelones Auto Center",
+    slug: "canelones-auto-center",
+    location: "Canelones, UY",
+    verified: true,
+    phone: "59899000008",
+    rating: 4.6,
+  },
 ];
 
 export const getDealership = (slug: string) =>
@@ -733,6 +778,8 @@ const PRIVATE_LOCATIONS = [
   "Canelones, UY",
 ];
 
+let dealerRowCount = 0;
+
 const EXTRA_VEHICLES: Vehicle[] = EXTRA_ROWS.map(
   (
     [
@@ -752,7 +799,9 @@ const EXTRA_VEHICLES: Vehicle[] = EXTRA_ROWS.map(
     const base =
       BASE_VEHICLES.find((v) => v.id === imageId) ?? BASE_VEHICLES[0];
     const dealership =
-      sellerType === "dealer" ? DEALERSHIPS[i % DEALERSHIPS.length] : undefined;
+      sellerType === "dealer"
+        ? DEALERSHIPS[dealerRowCount++ % DEALERSHIPS.length]
+        : undefined;
     const created = new Date(Date.UTC(2026, 9, 10 - i));
     return {
       id: String(BASE_VEHICLES.length + i + 1),
