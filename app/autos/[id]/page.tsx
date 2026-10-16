@@ -245,14 +245,14 @@ export default async function VehiclePage({ params }: Props) {
             tabIndex={0}
             aria-label="Otros avisos, desplazá horizontalmente"
             data-testid="related-scroller"
-            className="-mx-3 mt-2 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-3 px-3 pb-8 pt-4 [scrollbar-width:thin] lg:-mx-6 lg:scroll-px-6 lg:px-6"
+            className="-mx-3 mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-px-3 px-3 pb-8 pt-4 [scrollbar-width:thin] lg:-mx-6 lg:scroll-px-6 lg:px-6"
           >
             {related.map((v) => (
               <li
                 key={v.id}
-                className="flex w-[230px] shrink-0 snap-start sm:w-[290px]"
+                className="flex w-[189px] shrink-0 snap-start sm:w-[214px]"
               >
-                <VehicleCard vehicle={v} compact="mobile" />
+                <VehicleCard vehicle={v} compact />
               </li>
             ))}
           </ul>
