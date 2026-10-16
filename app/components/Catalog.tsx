@@ -1,7 +1,13 @@
 "use client";
 
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  SlidersHorizontal,
+} from "lucide-react";
+import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import type { Vehicle } from "../data/vehicles";
 import VehicleCard from "./VehicleCard";
@@ -208,6 +214,26 @@ export default function Catalog({ vehicles }: { vehicles: Vehicle[] }) {
           </button>
         </nav>
       )}
+
+      <div className="mt-8 flex justify-center">
+        <Link
+          href="/autos"
+          data-testid="advanced-search-link"
+          className="group inline-flex items-center gap-2 rounded-full border border-line px-6 py-3 text-xs font-semibold uppercase tracking-wider text-fg transition-[border-color,transform] duration-150 hover:border-fg/40 active:scale-95"
+        >
+          <SlidersHorizontal
+            className="h-4 w-4"
+            strokeWidth={1.75}
+            aria-hidden
+          />
+          Búsqueda avanzada
+          <ArrowRight
+            className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+            strokeWidth={1.75}
+            aria-hidden
+          />
+        </Link>
+      </div>
     </section>
   );
 }
