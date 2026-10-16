@@ -18,9 +18,9 @@ export default function Home() {
       <main className="mx-auto min-h-screen w-full max-w-[1440px] bg-bg text-fg selection:bg-fg selection:text-bg">
         <NewListings vehicles={SAMPLE_VEHICLES} />
         <Catalog vehicles={SAMPLE_VEHICLES} />
-        <PublishSection />
         <FinanceCalculator />
         <BankTicker />
+        <PublishSection />
         <Footer />
       </main>
     </>
