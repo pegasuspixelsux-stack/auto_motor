@@ -1,18 +1,7 @@
-import { Menu } from "lucide-react";
 import Link from "next/link";
 import Logo from "./Logo";
-
-/** `wide` links only show from the lg breakpoint, to keep tablets uncrowded. */
-const RIGHT_LINKS = [
-  { label: "Financiación", href: "/#calculadora", wide: true },
-  { label: "Vende tu auto", href: "/#publicar", wide: true },
-];
-
-const LINKS = [
-  { label: "Publicar tu auto", href: "/#publicar" },
-  { label: "Compra tu auto", href: "/autos" },
-  { label: "Concesionarias", href: "/concesionarias" },
-];
+import MobileMenu from "./MobileMenu";
+import { NAV_LINKS, NAV_RIGHT_LINKS } from "./navLinks";
 
 export default function SiteHeader() {
   return (
@@ -21,15 +10,9 @@ export default function SiteHeader() {
         aria-label="Principal"
         className="relative mx-auto flex max-w-[1440px] items-center justify-between px-3 py-6 lg:px-6"
       >
-        <button
-          type="button"
-          aria-label="Abrir menú"
-          className="rounded-md p-1 text-fg/90 transition-[transform,color] duration-150 ease-out hover:text-fg active:scale-95 md:hidden"
-        >
-          <Menu className="h-5 w-5" strokeWidth={1.5} />
-        </button>
+        <MobileMenu />
         <div className="hidden items-center gap-6 md:flex">
-          {LINKS.map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.label}
               href={link.href}
@@ -47,7 +30,7 @@ export default function SiteHeader() {
           <Logo />
         </Link>
         <div className="hidden items-center gap-6 sm:flex">
-          {RIGHT_LINKS.map((link) => (
+          {NAV_RIGHT_LINKS.map((link) => (
             <Link
               key={link.label}
               href={link.href}
