@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import {
   ArrowRight,
+  ChevronDown,
   BadgeCheck,
   Camera,
   ClipboardList,
@@ -90,83 +91,108 @@ export default function PublishSection() {
   const [mode, setMode] = useState<Mode>("private");
   const reduce = useReducedMotion();
   const baseId = useId();
+  const panelId = useId();
+  const [open, setOpen] = useState(false);
 
   return (
     <section
       id="publicar"
       data-testid="publish-section"
       aria-labelledby="publish-heading"
-      className="mx-auto max-w-[1440px] scroll-mt-4 px-3 pb-16 pt-10 lg:px-6 lg:pb-24"
+      className="-mt-px mx-auto max-w-[1440px] scroll-mt-4 lg:mt-0 lg:px-6 lg:pb-24 lg:pt-10"
     >
-      <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-widest text-muted">
-            Publicar
-          </p>
-          <h2
-            id="publish-heading"
-            className="mt-2 text-balance text-3xl font-light tracking-[-0.02em] lg:text-4xl"
-          >
-            Publicá tu Auto &amp; Concesionarias
-          </h2>
+      <button
+        type="button"
+        aria-expanded={open}
+        aria-controls={panelId}
+        data-testid="publish-toggle"
+        onClick={() => setOpen((o) => !o)}
+        className="flex w-full items-center justify-between gap-4 border-y border-line px-3 py-4 text-left lg:hidden"
+      >
+        <span className="block text-xs font-medium uppercase tracking-widest text-fg">
+          Publicá tu auto &amp; concesionarias
+        </span>
+        <ChevronDown
+          aria-hidden
+          strokeWidth={1.75}
+          className={`h-5 w-5 shrink-0 text-muted transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      <div
+        id={panelId}
+        className={`${open ? "block" : "hidden"} px-3 pb-10 pt-6 lg:block lg:px-0 lg:pb-0 lg:pt-0`}
+      >
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div className="hidden lg:block">
+            <p className="text-xs font-medium uppercase tracking-widest text-muted">
+              Publicar
+            </p>
+            <h2
+              id="publish-heading"
+              className="mt-2 text-balance text-3xl font-light tracking-[-0.02em] lg:text-4xl"
+            >
+              Publicá tu Auto &amp; Concesionarias
+            </h2>
+          </div>
+
+          <LayoutGroup id="publish-tabs">
+            <div
+              role="tablist"
+              aria-label="Tipo de vendedor"
+              className="inline-flex w-full rounded-full border border-line bg-surface p-1 sm:w-auto"
+            >
+              {TABS.map((tab) => {
+                const selected = tab.id === mode;
+                return (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    id={`${baseId}-tab-${tab.id}`}
+                    aria-selected={selected}
+                    aria-controls={`${baseId}-panel-${tab.id}`}
+                    data-testid={`publish-tab-${tab.id}`}
+                    onClick={() => setMode(tab.id)}
+                    className={`relative flex-1 whitespace-nowrap rounded-full px-5 py-2.5 text-xs font-medium transition-[color,transform] duration-150 active:scale-[0.97] sm:flex-none ${
+                      selected ? "text-on-inverse" : "text-muted hover:text-fg"
+                    }`}
+                  >
+                    {selected && (
+                      <motion.span
+                        layoutId="publish-pill"
+                        transition={{
+                          type: "spring",
+                          duration: 0.4,
+                          bounce: 0.15,
+                        }}
+                        className="absolute inset-0 rounded-full bg-inverse"
+                      />
+                    )}
+                    <span className="relative">{tab.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </LayoutGroup>
         </div>
 
-        <LayoutGroup id="publish-tabs">
-          <div
-            role="tablist"
-            aria-label="Tipo de vendedor"
-            className="inline-flex w-full rounded-full border border-line bg-surface p-1 sm:w-auto"
-          >
-            {TABS.map((tab) => {
-              const selected = tab.id === mode;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  role="tab"
-                  id={`${baseId}-tab-${tab.id}`}
-                  aria-selected={selected}
-                  aria-controls={`${baseId}-panel-${tab.id}`}
-                  data-testid={`publish-tab-${tab.id}`}
-                  onClick={() => setMode(tab.id)}
-                  className={`relative flex-1 whitespace-nowrap rounded-full px-5 py-2.5 text-xs font-medium transition-[color,transform] duration-150 active:scale-[0.97] sm:flex-none ${
-                    selected ? "text-on-inverse" : "text-muted hover:text-fg"
-                  }`}
-                >
-                  {selected && (
-                    <motion.span
-                      layoutId="publish-pill"
-                      transition={{
-                        type: "spring",
-                        duration: 0.4,
-                        bounce: 0.15,
-                      }}
-                      className="absolute inset-0 rounded-full bg-inverse"
-                    />
-                  )}
-                  <span className="relative">{tab.label}</span>
-                </button>
-              );
-            })}
-          </div>
-        </LayoutGroup>
-      </div>
-
-      <div className="mt-10">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={mode}
-            role="tabpanel"
-            id={`${baseId}-panel-${mode}`}
-            aria-labelledby={`${baseId}-tab-${mode}`}
-            initial={{ opacity: 0, y: reduce ? 0 : 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: reduce ? 0 : -8 }}
-            transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-          >
-            {mode === "private" ? <PrivatePanel /> : <DealerPanel />}
-          </motion.div>
-        </AnimatePresence>
+        <div className="mt-10">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={mode}
+              role="tabpanel"
+              id={`${baseId}-panel-${mode}`}
+              aria-labelledby={`${baseId}-tab-${mode}`}
+              initial={{ opacity: 0, y: reduce ? 0 : 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: reduce ? 0 : -8 }}
+              transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
+            >
+              {mode === "private" ? <PrivatePanel /> : <DealerPanel />}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );
