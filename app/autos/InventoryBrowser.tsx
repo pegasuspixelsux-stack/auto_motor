@@ -412,7 +412,7 @@ function CarCard({ vehicle }: { vehicle: Vehicle }) {
   return (
     <article
       data-testid={`car-${vehicle.id}`}
-      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface shadow-[var(--card-shadow)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] focus-within:ring-2 focus-within:ring-fg/60"
+      className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface shadow-[var(--card-shadow)] transition-[transform,box-shadow,border-color] duration-300 ease-out [:root:not([data-theme=light])_&]:hover:border-brand/50 [:root:not([data-theme=light])_&]:hover:shadow-[0_0_36px_-6px_rgba(255,234,0,0.45)] hover:-translate-y-1 hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.5)] focus-within:ring-2 focus-within:ring-fg/60"
     >
       <div className="relative h-48 w-full overflow-hidden bg-neutral-900">
         <Image

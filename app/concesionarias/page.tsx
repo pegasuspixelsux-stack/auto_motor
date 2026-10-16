@@ -35,7 +35,7 @@ export default function ConcesionariasPage() {
                 <Link
                   href={`/concesionarias/${dealer.slug}`}
                   data-testid={`dealer-${dealer.slug}`}
-                  className="group block h-full rounded-xl border border-line bg-surface p-6 shadow-[var(--card-shadow)] transition-transform duration-200 ease-out hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-fg/60"
+                  className="group block h-full rounded-xl border border-line bg-surface p-6 shadow-[var(--card-shadow)] transition-[transform,box-shadow,border-color] duration-300 ease-out [:root:not([data-theme=light])_&]:hover:border-brand/50 [:root:not([data-theme=light])_&]:hover:shadow-[0_0_36px_-6px_rgba(255,234,0,0.45)] hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-fg/60"
                 >
                   <div className="flex items-start justify-between gap-4">
                     <h2 className="text-xl font-medium tracking-tight">

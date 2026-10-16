@@ -28,7 +28,7 @@ function Brand() {
   return (
     <Link href="/dashboard" className="flex items-center gap-3">
       <span className="text-lg font-bold uppercase tracking-[-0.02em]">
-        <span className="mr-[0.15em] bg-yellow-400 px-1.5 py-0.5 text-black">
+        <span className="mr-[0.15em] bg-brand px-1.5 py-0.5 text-black">
           AUTO
         </span>
         MOTOR

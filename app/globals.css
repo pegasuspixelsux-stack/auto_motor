@@ -28,6 +28,7 @@
 }
 
 @theme inline {
+  --color-brand: #ffea00;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --color-bg: var(--bg);
