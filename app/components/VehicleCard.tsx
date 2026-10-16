@@ -18,6 +18,7 @@ const FUEL_LABELS: Record<Vehicle["fuelType"], string> = {
   Electric: "Eléctrico",
   Gasoline: "Nafta",
   Hybrid: "Híbrido",
+  Diesel: "Diésel",
 };
 
 /** Class for compact (true), full (false), or compact-on-mobile ("mobile"). */

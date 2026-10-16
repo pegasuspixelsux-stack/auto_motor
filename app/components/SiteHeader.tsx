@@ -8,7 +8,7 @@ const RIGHT_LINKS = [
 ];
 
 const LINKS = [
-  { label: "Mercado", href: "/#inventory" },
+  { label: "Mercado", href: "/autos" },
   { label: "Concesionarias", href: "/concesionarias" },
   { label: "Publicar auto", href: "#" },
 ];
@@ -18,7 +18,7 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-line bg-bg/80 backdrop-blur-xl backdrop-saturate-150">
       <nav
         aria-label="Principal"
-        className="relative mx-auto flex max-w-[1440px] items-center justify-between px-3 py-4 lg:px-6"
+        className="relative mx-auto flex max-w-[1440px] items-center justify-between px-3 py-6 lg:px-6"
       >
         <button
           type="button"

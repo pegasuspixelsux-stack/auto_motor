@@ -9,6 +9,10 @@ import Hero from "./components/Hero";
 import NewListings from "./components/NewListings";
 import { SAMPLE_VEHICLES } from "./data/vehicles";
 
+const LATEST = [...SAMPLE_VEHICLES]
+  .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+  .slice(0, 12);
+
 export default function Home() {
   return (
     <>
@@ -16,7 +20,7 @@ export default function Home() {
       <SiteHeader />
       <Hero />
       <main className="mx-auto min-h-screen w-full max-w-[1440px] bg-bg text-fg selection:bg-fg selection:text-bg">
-        <NewListings vehicles={SAMPLE_VEHICLES} />
+        <NewListings vehicles={LATEST} />
         <Catalog vehicles={SAMPLE_VEHICLES} />
         <FinanceCalculator />
         <BankTicker />

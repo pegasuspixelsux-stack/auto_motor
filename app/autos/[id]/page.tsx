@@ -37,6 +37,7 @@ const FUEL_LABELS: Record<Vehicle["fuelType"], string> = {
   Electric: "Eléctrico",
   Gasoline: "Nafta",
   Hybrid: "Híbrido",
+  Diesel: "Diésel",
 };
 
 export function generateStaticParams() {
@@ -84,7 +85,7 @@ export default async function VehiclePage({ params }: Props) {
   )
     .concat(SAMPLE_VEHICLES.filter((v) => v.fuelType !== vehicle.fuelType))
     .filter((v) => v.id !== vehicle.id)
-    .slice(0, 4);
+    .slice(0, 12);
 
   return (
     <>
@@ -240,11 +241,21 @@ export default async function VehiclePage({ params }: Props) {
           >
             Otros avisos
           </h2>
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+          <ul
+            tabIndex={0}
+            aria-label="Otros avisos, desplazá horizontalmente"
+            data-testid="related-scroller"
+            className="-mx-3 mt-2 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-3 px-3 pb-8 pt-4 [scrollbar-width:thin] lg:-mx-6 lg:scroll-px-6 lg:px-6"
+          >
             {related.map((v) => (
-              <VehicleCard key={v.id} vehicle={v} compact="mobile" />
+              <li
+                key={v.id}
+                className="flex w-[230px] shrink-0 snap-start sm:w-[290px]"
+              >
+                <VehicleCard vehicle={v} compact="mobile" />
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       </main>
       <div className="mx-auto w-full max-w-[1440px]">

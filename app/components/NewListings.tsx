@@ -18,7 +18,7 @@ export default function NewListings({ vehicles }: { vehicles: Vehicle[] }) {
             Últimos ingresos
           </h2>
           <a
-            href="#inventory"
+            href="/autos"
             data-testid="see-all-inventory"
             className="shrink-0 text-xs text-muted underline-offset-4 transition-colors duration-150 hover:text-fg hover:underline"
           >
