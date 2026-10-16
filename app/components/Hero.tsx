@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ChevronDown, Search, SlidersHorizontal } from "lucide-react";
+import {
+  ArrowRight,
+  ChevronDown,
+  Search,
+  SlidersHorizontal,
+} from "lucide-react";
 import { useState, type ReactNode } from "react";
 
 interface HeroProps {
@@ -89,8 +94,11 @@ export default function Hero({
             data-testid="hero-search"
             className="mt-5 sm:mt-8"
           >
-            <div className="flex items-center gap-3 rounded-full border border-line bg-surface py-2 pl-5 pr-2 backdrop-blur-md transition-colors duration-150 focus-within:border-fg/40">
-              <Search className="h-4 w-4 shrink-0 text-muted" strokeWidth={1.5} />
+            <div className="flex items-center gap-3 rounded-full border border-yellow-400/40 bg-surface py-2 pl-5 pr-2 backdrop-blur-md shadow-[0_0_24px_-4px_rgba(250,204,21,0.45)] transition-[transform,box-shadow,border-color] duration-300 ease-out hover:scale-[1.02] hover:border-yellow-400/70 hover:shadow-[0_0_44px_-2px_rgba(250,204,21,0.6),0_18px_40px_-12px_rgba(0,0,0,0.65)] focus-within:border-yellow-400/80 focus-within:shadow-[0_0_44px_-2px_rgba(250,204,21,0.6)] [:root[data-theme=light]_&]:border-blue-500/50 [:root[data-theme=light]_&]:shadow-[0_0_24px_-4px_rgba(59,130,246,0.5)] [:root[data-theme=light]_&]:hover:border-blue-500/80 [:root[data-theme=light]_&]:hover:shadow-[0_0_44px_-2px_rgba(59,130,246,0.65),0_18px_40px_-12px_rgba(0,0,0,0.35)] [:root[data-theme=light]_&]:focus-within:border-blue-500/90 [:root[data-theme=light]_&]:focus-within:shadow-[0_0_44px_-2px_rgba(59,130,246,0.65)] motion-reduce:transition-none motion-reduce:hover:scale-100">
+              <Search
+                className="h-4 w-4 shrink-0 text-muted"
+                strokeWidth={1.5}
+              />
               <input
                 type="search"
                 name="q"
@@ -135,7 +143,12 @@ export default function Hero({
                 >
                   <div className="mt-3 grid grid-cols-2 gap-3 rounded-xl border border-line bg-surface p-4 text-left backdrop-blur-md">
                     <Field label="Marca">
-                      <input type="text" name="make" placeholder="Ej. Audi" className={FIELD} />
+                      <input
+                        type="text"
+                        name="make"
+                        placeholder="Ej. Audi"
+                        className={FIELD}
+                      />
                     </Field>
                     <Field label="Combustible">
                       <select name="fuel" defaultValue="" className={FIELD}>
@@ -146,16 +159,44 @@ export default function Hero({
                       </select>
                     </Field>
                     <Field label="Año desde">
-                      <input type="number" name="yearMin" inputMode="numeric" min={1990} placeholder="2020" className={FIELD} />
+                      <input
+                        type="number"
+                        name="yearMin"
+                        inputMode="numeric"
+                        min={1990}
+                        placeholder="2020"
+                        className={FIELD}
+                      />
                     </Field>
                     <Field label="Año hasta">
-                      <input type="number" name="yearMax" inputMode="numeric" min={1990} placeholder="2025" className={FIELD} />
+                      <input
+                        type="number"
+                        name="yearMax"
+                        inputMode="numeric"
+                        min={1990}
+                        placeholder="2025"
+                        className={FIELD}
+                      />
                     </Field>
                     <Field label="Precio máx. (US$)">
-                      <input type="number" name="priceMax" inputMode="numeric" min={0} placeholder="100000" className={FIELD} />
+                      <input
+                        type="number"
+                        name="priceMax"
+                        inputMode="numeric"
+                        min={0}
+                        placeholder="100000"
+                        className={FIELD}
+                      />
                     </Field>
                     <Field label="Kilometraje máx.">
-                      <input type="number" name="kmMax" inputMode="numeric" min={0} placeholder="50000" className={FIELD} />
+                      <input
+                        type="number"
+                        name="kmMax"
+                        inputMode="numeric"
+                        min={0}
+                        placeholder="50000"
+                        className={FIELD}
+                      />
                     </Field>
                     <Field label="Vendedor">
                       <select name="seller" defaultValue="" className={FIELD}>
@@ -165,7 +206,12 @@ export default function Hero({
                       </select>
                     </Field>
                     <Field label="Ubicación">
-                      <input type="text" name="location" placeholder="Ej. Montevideo" className={FIELD} />
+                      <input
+                        type="text"
+                        name="location"
+                        placeholder="Ej. Montevideo"
+                        className={FIELD}
+                      />
                     </Field>
                   </div>
                 </motion.div>
