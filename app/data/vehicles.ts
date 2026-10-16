@@ -1,5 +1,5 @@
 export type FuelType = "Electric" | "Gasoline" | "Hybrid" | "Diesel";
-export type BodyType = "Auto" | "SUV" | "Deportivo" | "Clásico";
+export type BodyType = "Auto" | "SUV" | "Deportivo" | "Clásico" | "Moto";
 
 export type SellerType = "private" | "dealer";
 
@@ -767,6 +767,78 @@ const EXTRA_ROWS: ExtraRow[] = [
     "private",
     "11",
   ],
+  [
+    "Harley-Davidson",
+    "Street Bob 114",
+    2021,
+    16800,
+    9000,
+    "Manual",
+    "Gasoline",
+    "Moto",
+    "private",
+    "photo-1558981806-ec527fa84c39",
+  ],
+  [
+    "Ducati",
+    "SuperSport S",
+    2022,
+    17900,
+    6000,
+    "Manual",
+    "Gasoline",
+    "Moto",
+    "dealer",
+    "photo-1568772585407-9361f9bf3a87",
+  ],
+  [
+    "Yamaha",
+    "YZF-R6",
+    2020,
+    12400,
+    14000,
+    "Manual",
+    "Gasoline",
+    "Moto",
+    "private",
+    "photo-1609630875171-b1321377ee65",
+  ],
+  [
+    "Harley-Davidson",
+    "LiveWire",
+    2021,
+    21500,
+    4000,
+    "Automática",
+    "Electric",
+    "Moto",
+    "dealer",
+    "photo-1558981403-c5f9899a28bc",
+  ],
+  [
+    "Harley-Davidson",
+    "Road King",
+    2019,
+    19800,
+    22000,
+    "Manual",
+    "Gasoline",
+    "Moto",
+    "private",
+    "photo-1558980664-3a031cf67ea8",
+  ],
+  [
+    "KTM",
+    "RC 390",
+    2022,
+    6900,
+    5000,
+    "Manual",
+    "Gasoline",
+    "Moto",
+    "dealer",
+    "photo-1449426468159-d96dbf08f19f",
+  ],
 ];
 
 const PRIVATE_LOCATIONS = [
@@ -813,7 +885,7 @@ const EXTRA_VEHICLES: Vehicle[] = EXTRA_ROWS.map(
       transmission,
       fuelType,
       bodyType,
-      image: base.image,
+      image: imageId.startsWith("photo-") ? img(imageId) : base.image,
       location:
         dealership?.location ?? PRIVATE_LOCATIONS[i % PRIVATE_LOCATIONS.length],
       sellerType,

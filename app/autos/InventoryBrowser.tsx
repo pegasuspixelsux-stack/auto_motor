@@ -34,6 +34,7 @@ const BODY_TYPES: { value: BodyType; label: string }[] = [
   { value: "SUV", label: "Camionetas / SUVs" },
   { value: "Deportivo", label: "Deportivos" },
   { value: "Clásico", label: "Clásicos" },
+  { value: "Moto", label: "Motos" },
 ];
 
 const FUELS: { value: FuelType; label: string }[] = [
