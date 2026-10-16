@@ -47,6 +47,7 @@ const LEGAL_LINKS = [
   { label: "Términos y condiciones", href: "#" },
   { label: "Política de cookies", href: "#" },
   { label: "Protección de datos personales", href: "#" },
+  { label: "Admin", href: "/login" },
 ];
 
 export default function Footer() {
